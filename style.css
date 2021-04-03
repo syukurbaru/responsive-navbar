@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+
+nav .logo {
+    font-family: Pacifico, cursive;
+    letter-spacing: 3px;
+    font-size: 25px;
+}
+
+nav {
+    display: flex;
+    background-color: rgb(170, 117, 223);
+    justify-content: space-around;
+    /* padding: 20px 0; */
+    color:  rgb(233, 222, 243);
+    height: 60px;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    width: 40%;
+    justify-content: space-between;
+}
+
+nav ul li a {
+    color: rgb(127, 1, 253);
+    text-decoration: none;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 15px;
+    transition: all .5s;
+};
+
+
+/* Hamberger Menu */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    justify-content: space-between;
+    position:relative;
+}
+
+.menu-toggle input {
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    right: 66px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.menu-toggle span {
+    display: none;
+    width: 25px;
+    height: 5px;
+    background-color: rgb(206, 177, 233);
+    border-radius: 3px;
+    margin: 3px;
+    transition: all 0.3s;
+}
+
+
+/* Hamburge animation menu */
+.menu-toggle span:nth-child(2) {
+    transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4) {
+    transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2) {
+    background-color: #fff;
+    transform: rotate(45deg);
+    /* kalau bermasalah bisa ditambah translate() */
+}
+
+.menu-toggle input:checked ~ span:nth-child(4) {
+    background-color: #fff;
+    transform: rotate(-45deg);
+}
+
+.menu-toggle input:checked ~ span:nth-child(3) {
+    transform: scale(0)
+}
+
+
+/* Responsive */
+
+/* Ukuran PC */
+@media screen and (max-width: 1680px) {
+    nav ul li a:hover {
+        color: #fff;
+        padding: 15px;
+        box-sizing: border-box;
+        background-color: rgb(8, 121, 250);
+
+    };
+}
+
+/* Ukuran Tablet */
+@media screen and (max-width: 768px) {
+    nav ul {
+        width: 50%;
+    }
+
+    a:hover {
+        color: #fff;
+    }
+}
+
+/* Ukuran mobile */
+@media screen and (max-width: 576px) {
+    .menu-toggle span {
+        display: block
+    }
+
+    nav ul {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        z-index: -99;
+        background-color: rgba(170, 117, 223,0.6);
+        transform: translateX(100%);
+        transition: all .7s;
+        opacity: .1;
+    }
+    a:hover {
+        color: blue;
+        font-weight: bold;
+    }
+    nav ul.slide {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
